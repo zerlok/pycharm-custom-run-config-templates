@@ -5,16 +5,20 @@ import com.intellij.execution.configurations.ConfigurationType
 import com.intellij.openapi.util.IconLoader
 import javax.swing.Icon
 
-class HelloWorldConfigurationType : ConfigurationType {
-    override fun getDisplayName(): String = "Hello World Custom Config"
+class PythonToolConfigurationType : ConfigurationType {
+    override fun getDisplayName(): String = "Python Tools"
 
     override fun getConfigurationTypeDescription(): String = 
-        "A simple run configuration that prints 'hello world from custom run config templates'"
+        "Python development tools (mypy, ruff) run configurations"
 
     override fun getIcon(): Icon = IconLoader.getIcon("/icons/hello-world.svg", javaClass)
 
-    override fun getId(): String = "HelloWorldCustomRunConfig"
+    override fun getId(): String = "PythonToolsConfig"
 
     override fun getConfigurationFactories(): Array<ConfigurationFactory> = 
-        arrayOf(HelloWorldConfigurationFactory(this))
+        arrayOf(
+            MypyConfigurationFactory(this),
+            RuffFormatConfigurationFactory(this),
+            RuffFixConfigurationFactory(this)
+        )
 }

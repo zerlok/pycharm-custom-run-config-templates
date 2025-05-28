@@ -16,7 +16,7 @@
     <depends>com.intellij.modules.lang</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <configurationType implementation="com.zerlok.customrunconfigs.HelloWorldConfigurationType"/>
+        <configurationType implementation="com.zerlok.customrunconfigs.PythonToolConfigurationType"/>
     </extensions>
 
     <actions>

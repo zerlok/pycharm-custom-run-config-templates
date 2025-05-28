@@ -5,11 +5,11 @@ import com.intellij.execution.configurations.ConfigurationType
 import com.intellij.execution.configurations.RunConfiguration
 import com.intellij.openapi.project.Project
 
-class HelloWorldConfigurationFactory(type: ConfigurationType) : ConfigurationFactory(type) {
-    override fun getId(): String = "HelloWorldFactory"
+class RuffFormatConfigurationFactory(type: ConfigurationType) : ConfigurationFactory(type) {
+    override fun getId(): String = "RuffFormatFactory"
 
     override fun createTemplateConfiguration(project: Project): RunConfiguration =
-        HelloWorldRunConfiguration(project, this, "Hello World")
+        PythonToolRunConfiguration(project, this, "ruff format", "ruff", listOf("format"))
 
-    override fun getName(): String = "Hello World Configuration"
+    override fun getName(): String = "ruff format"
 }

@@ -7,20 +7,21 @@ import javax.swing.JComponent
 import javax.swing.JPanel
 import java.awt.BorderLayout
 
-class HelloWorldSettingsEditor : SettingsEditor<HelloWorldRunConfiguration>() {
+class PythonToolSettingsEditor : SettingsEditor<PythonToolRunConfiguration>() {
+    
     private val panel = JPanel(BorderLayout())
     private val nameField = JBTextField()
-
+    
     init {
-        val labeledComponent = LabeledComponent.create(nameField, "Configuration Name:")
-        panel.add(labeledComponent, BorderLayout.NORTH)
+        val nameComponent = LabeledComponent.create(nameField, "Configuration name:")
+        panel.add(nameComponent, BorderLayout.NORTH)
     }
 
-    override fun resetEditorFrom(configuration: HelloWorldRunConfiguration) {
+    override fun resetEditorFrom(configuration: PythonToolRunConfiguration) {
         nameField.text = configuration.name
     }
 
-    override fun applyEditorTo(configuration: HelloWorldRunConfiguration) {
+    override fun applyEditorTo(configuration: PythonToolRunConfiguration) {
         configuration.name = nameField.text
     }
 

@@ -6,21 +6,23 @@ import com.intellij.execution.runners.ExecutionEnvironment
 import com.intellij.openapi.options.SettingsEditor
 import com.intellij.openapi.project.Project
 
-class HelloWorldRunConfiguration(
+class PythonToolRunConfiguration(
     project: Project,
     factory: ConfigurationFactory,
-    name: String
-) : RunConfigurationBase<HelloWorldRunConfigurationOptions>(project, factory, name) {
+    name: String,
+    private val toolCommand: String,
+    private val toolArgs: List<String> = emptyList()
+) : RunConfigurationBase<PythonToolRunConfigurationOptions>(project, factory, name) {
 
-    override fun getOptions(): HelloWorldRunConfigurationOptions = super.getOptions() as HelloWorldRunConfigurationOptions
+    override fun getOptions(): PythonToolRunConfigurationOptions = super.getOptions() as PythonToolRunConfigurationOptions
 
     override fun getConfigurationEditor(): SettingsEditor<out RunConfiguration> = 
-        HelloWorldSettingsEditor()
+        PythonToolSettingsEditor()
 
     override fun checkConfiguration() {
-        // No validation needed for this simple configuration
+        // Basic validation - could be extended to check if Python/tools are available
     }
 
     override fun getState(executor: Executor, environment: ExecutionEnvironment): RunProfileState = 
-        HelloWorldRunProfileState(environment)
+        PythonToolRunProfileState(environment, toolCommand, toolArgs)
 }

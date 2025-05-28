@@ -1,0 +1,25 @@
+<idea-plugin>
+    <id>com.zerlok.pycharm-custom-run-config-templates</id>
+    <name>PyCharm Custom Run Config Templates</name>
+    <vendor email="danil.troshnev@gmail.com" url="https://github.com/zerlok">zerlok</vendor>
+
+    <description><![CDATA[
+    A PyCharm plugin that allows users to define global run configuration templates available across all projects.
+    Features:
+    - Define global run configuration templates independent of any project
+    - Automatically inject global configurations into every opened PyCharm project
+    - Support multiple configuration types (Python, Shell Script, Application, etc.)
+    - User-friendly settings panel under Preferences → Tools → Custom Run Config Templates
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.lang</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <configurationType implementation="com.zerlok.customrunconfigs.HelloWorldConfigurationType"/>
+    </extensions>
+
+    <actions>
+        <!-- Plugin-specific actions can be added here -->
+    </actions>
+</idea-plugin>
